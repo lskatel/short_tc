@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">short_tc</string>
+    <string name="app_name">Мобильный ТС</string>
     <string name="center_text">Мобильный ТС</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_detal">Деталь</string>
 </resources>
