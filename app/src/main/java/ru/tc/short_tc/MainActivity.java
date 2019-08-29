@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 public class MainActivity extends AppCompatActivity {
     DBHelper db_helper;
@@ -25,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         /*ArrayAdapter<DSEModel> adapter = new ArrayAdapter<>(this,
                 android.R.layout.activity_list_item, db_helper.getAllDSE());*/
 
-        ArrayAdapter<DSEModel> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, db_helper.getAllDSE());
+        SimpleAdapter adapter = new SimpleAdapter(this, db_helper.getAllDSE(),
+                android.R.layout.activity_list_item, new String[] {"dse_id", "dse_name"} , new int[] {R.id.dse_id, R.id.dse_name});
 
         lv.setAdapter(adapter);
     }

@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -40,18 +41,23 @@ public class DBHelper extends SQLiteOpenHelper {
         //db.execSQL("drop table if exists ...");
     }
 
-    public List<DSEModel> getAllDSE() {
-        List<DSEModel> res = new ArrayList<>();
+    public List<HashMap<String, Object>> getAllDSE() {
+        List<HashMap<String, Object>> res = new ArrayList<>();
 
         SQLiteDatabase db = getWritableDatabase();
         Cursor dse_table = db.query("dse_table", null, null, null, null, null, null);
 
         if (dse_table.moveToFirst()) {
             do {
-                DSEModel dse = new DSEModel();
-                dse.id = dse_table.getInt(0);
+                //DSEModel dse = new DSEModel();
+                HashMap<String, Object> dse = new HashMap<>();
+                //dse.put("dse_id", dse_table.getInt(0));
+                dse.put("dse_id", dse_table.getString(1));
+                dse.put("dse_name", dse_table.getString(2));
+
+                /*dse.id = dse_table.getInt(0);
                 dse.dse_id = dse_table.getString(1);
-                dse.dse_name = dse_table.getString(2);
+                dse.dse_name = dse_table.getString(2);*/
 
                 res.add(dse);
             } while (dse_table.moveToNext());

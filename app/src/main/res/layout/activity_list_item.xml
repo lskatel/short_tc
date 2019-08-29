@@ -11,7 +11,8 @@
         android:id="@+id/dse_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="dse_id"/>
+        android:text="dse_id"
+        android:textSize="24dp"/>
 
     <TextView
         android:id="@+id/dse_name"
@@ -19,5 +20,11 @@
         android:layout_height="wrap_content"
         android:text="dse_name"/>
 
+    <ImageButton
+        android:id="@+id/btn_prev"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/back_image" />
 
 </LinearLayout>
