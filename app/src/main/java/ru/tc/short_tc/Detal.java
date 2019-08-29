@@ -17,6 +17,10 @@ public class Detal extends AppCompatActivity {
 
         ImageButton btn = findViewById(R.id.btn_prev2);
         btn.setOnClickListener(new PrevClick());
+
+        ImageButton btnFind = findViewById(R.id.btn_prev);
+        btnFind.setOnClickListener(new FindClick());
+
     }
 
 
@@ -25,6 +29,15 @@ public class Detal extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(Detal.this, Structure.class);
+            startActivity(intent);
+        }
+    }
+
+    private class FindClick implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Detal.this, MainActivity.class);
             startActivity(intent);
         }
     }
