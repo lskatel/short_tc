@@ -32,7 +32,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("insert into dse_table (dse_id, dse_name) values ('D_3', 'Вал');");
         db.execSQL("insert into dse_table (dse_id, dse_name) values ('SE_1', 'Корпус');");
         db.execSQL("insert into dse_table (dse_id, dse_name) values ('SE_1', 'Кронштейн');");
-        db.close();
     }
 
     @Override
@@ -44,7 +43,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public List<DSEModel> getAllDSE() {
         List<DSEModel> res = new ArrayList<>();
 
-        SQLiteDatabase db = getReadableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         Cursor dse_table = db.query("dse_table", null, null, null, null, null, null);
 
         if (dse_table.moveToFirst()) {
