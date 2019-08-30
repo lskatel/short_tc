@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -124,25 +125,35 @@ public class Detal extends AppCompatActivity {
             Bitmap bitmap = (Bitmap) extras.get("data");
             image.setImageBitmap(bitmap);
 
+            try {
+                File file = createImageFile();
+                FileOutputStream out = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+                out.flush();
+                out.close();
+            } catch (IOException e) {
+                Toast.makeText(Detal.this, "Error!", Toast.LENGTH_SHORT).show();
+            }
+
             /*Uri uri = Uri.parse(mCurrentPhotoPath);
             image.setImageURI(uri);*/
         }
     }
 
-    /*private File createImageFile() throws IOException {
+    private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         //File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File storageDir = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DCIM + "/");
         File image = File.createTempFile(
                 imageFileName,
-                ".jpg",
+                ".png",
                 storageDir
         );
 
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
-    }*/
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
